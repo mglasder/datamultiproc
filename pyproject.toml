@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "datamultiproc"
-version = "0.1.1"
-description = ""
+version = "0.1.2"
+description = "A Python multiprocessing library for data processing with pipelines."
 authors = ["Magnus Glasder"]
 license = "MIT"
 readme = "README.md"
