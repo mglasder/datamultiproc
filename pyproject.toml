@@ -1,9 +1,11 @@
 [tool.poetry]
 name = "datamultiproc"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Magnus Glasder"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/mglasder/datamultiproc"
 
 [tool.poetry.dependencies]
 python = "^3.9"
