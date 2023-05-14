@@ -1,5 +1,5 @@
 from pathlib import Path
-import pytest as pytest
+import pytest
 from assertpy import assert_that
 
 from datamultiproc.sample import BaseSample
