@@ -3,7 +3,11 @@ from multiprocessing import Process, Queue
 from typing import Optional, List, Callable
 import numpy as np
 
-from datamultiproc import BaseSample, Processor, ProcessingError, Compose
+from datamultiproc import BaseSample, Processor, ProcessingError, Compose, Save
+
+# TODO: modify this
+NUM_PROCESSES = 4
+SAVE_TO_DIR = "path/to/save"  # folder hast to exist before running
 
 
 class Point:
@@ -53,8 +57,8 @@ def do_processing(process: Callable, queue: Queue):
         sample = queue.get()
         try:
             sample = process(sample)
-        except ProcessingError:
-            print(f"failed processing: {sample.id}")
+        except ProcessingError as e:
+            print(f"failed processing: {sample.id} - {e}")
 
 
 def main():
@@ -82,14 +86,13 @@ def main():
         [
             CreatePointsProcessor(),
             CalculateAreaProcess(),
+            Save(save_to_dir=SAVE_TO_DIR),
         ]
     )
 
     samples_queue = Queue()
     for s in create_raw_samples(10):
         samples_queue.put(s)
-
-    NUM_PROCESSES = 1
 
     t0 = time.time()
     processes = []
