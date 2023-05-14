@@ -3,9 +3,7 @@ from multiprocessing import Process, Queue
 from typing import Optional, List, Callable
 import numpy as np
 
-from datamultiproc.composer import Compose
-from datamultiproc.processor import Processor, ProcessingError
-from datamultiproc.sample import BaseSample
+from datamultiproc import BaseSample, Processor, ProcessingError, Compose
 
 
 class Point:
